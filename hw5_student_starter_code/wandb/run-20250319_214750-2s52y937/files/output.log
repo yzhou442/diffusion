@@ -1,0 +1,24 @@
+03/19/2025 21:47:50 - INFO - __main__ - ***** Training arguments *****
+03/19/2025 21:47:50 - INFO - __main__ - Namespace(config='configs/ddim.yaml', data_dir='../imagenet100_128x128/train', image_size=128, batch_size=32, num_workers=5, num_classes=100, run_name='exp-8-ddpm', output_dir='experiments', num_epochs=5, learning_rate=0.0001, weight_decay=1e-05, grad_clip=1.0, seed=42, mixed_precision='none', num_train_timesteps=500, num_inference_steps=50, beta_start=0.0001, beta_end=0.02, beta_schedule='linear', variance_type='fixed_small', prediction_type='epsilon', clip_sample=True, clip_sample_range=1.0, unet_in_size=128, unet_in_ch=3, unet_ch=128, unet_ch_mult=[1, 2, 2, 4], unet_attn=[2, 3], unet_num_res_blocks=2, unet_dropout=0.0, latent_ddpm=False, use_cfg=False, cfg_guidance_scale=2.0, use_ddim=True, ckpt=None, max_train_steps=20310, distributed=False, world_size=1, rank=0, local_rank=0, device='cuda', total_batch_size=32)
+03/19/2025 21:47:50 - INFO - __main__ - ***** Running training *****
+03/19/2025 21:47:50 - INFO - __main__ -   Num examples = 130000
+03/19/2025 21:47:50 - INFO - __main__ -   Num Epochs = 5
+03/19/2025 21:47:50 - INFO - __main__ -   Instantaneous batch size per device = 32
+03/19/2025 21:47:50 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 32
+03/19/2025 21:47:50 - INFO - __main__ -   Total optimization steps per epoch 4062
+03/19/2025 21:47:50 - INFO - __main__ -   Total optimization steps = 20310
+  0%|                                                    | 0/20310 [00:00<?, ?it/s]03/19/2025 21:47:50 - INFO - __main__ - Epoch 1/5
+  0%|                                          | 1/20310 [00:01<9:16:53,  1.65s/it]03/19/2025 21:47:52 - INFO - __main__ - Epoch 1/5, Step 0/4062, Loss 0.997071385383606 (0.997071385383606)
+  0%|▏                                       | 101/20310 [01:51<6:10:28,  1.10s/it]03/19/2025 21:49:42 - INFO - __main__ - Epoch 1/5, Step 100/4062, Loss 0.3628683090209961 (0.708759192487981)
+  1%|▎                                       | 173/20310 [03:10<6:09:00,  1.10s/it]Traceback (most recent call last):
+  File "/jet/home/yzhou17/hw5/hw5_student_starter_code/train.py", line 439, in <module>
+    main()
+  File "/jet/home/yzhou17/hw5/hw5_student_starter_code/train.py", line 377, in main
+    loss.backward()
+  File "/jet/home/yzhou17/.local/lib/python3.10/site-packages/torch/_tensor.py", line 626, in backward
+    torch.autograd.backward(
+  File "/jet/home/yzhou17/.local/lib/python3.10/site-packages/torch/autograd/__init__.py", line 347, in backward
+    _engine_run_backward(
+  File "/jet/home/yzhou17/.local/lib/python3.10/site-packages/torch/autograd/graph.py", line 823, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt

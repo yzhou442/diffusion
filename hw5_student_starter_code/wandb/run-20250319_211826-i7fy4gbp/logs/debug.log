@@ -1,0 +1,41 @@
+2025-03-19 21:18:26,919 INFO    MainThread:88710 [wandb_setup.py:_flush():67] Current SDK version is 0.19.7
+2025-03-19 21:18:26,920 INFO    MainThread:88710 [wandb_setup.py:_flush():67] Configure stats pid to 88710
+2025-03-19 21:18:26,920 INFO    MainThread:88710 [wandb_setup.py:_flush():67] Loading settings from /jet/home/yzhou17/.config/wandb/settings
+2025-03-19 21:18:26,920 INFO    MainThread:88710 [wandb_setup.py:_flush():67] Loading settings from /jet/home/yzhou17/hw5/hw5_student_starter_code/wandb/settings
+2025-03-19 21:18:26,920 INFO    MainThread:88710 [wandb_setup.py:_flush():67] Loading settings from environment variables
+2025-03-19 21:18:26,920 INFO    MainThread:88710 [wandb_init.py:setup_run_log_directory():647] Logging user logs to /jet/home/yzhou17/hw5/hw5_student_starter_code/wandb/run-20250319_211826-i7fy4gbp/logs/debug.log
+2025-03-19 21:18:26,920 INFO    MainThread:88710 [wandb_init.py:setup_run_log_directory():648] Logging internal logs to /jet/home/yzhou17/hw5/hw5_student_starter_code/wandb/run-20250319_211826-i7fy4gbp/logs/debug-internal.log
+2025-03-19 21:18:26,920 INFO    MainThread:88710 [wandb_init.py:init():761] calling init triggers
+2025-03-19 21:18:26,920 INFO    MainThread:88710 [wandb_init.py:init():766] wandb.init called with sweep_config: {}
+config: {'config': 'configs/ddpm.yaml', 'data_dir': '../imagenet100_128x128/train', 'image_size': 128, 'batch_size': 32, 'num_workers': 8, 'num_classes': 100, 'run_name': 'exp-1-ddpm', 'output_dir': 'experiments', 'num_epochs': 100, 'learning_rate': 0.0001, 'weight_decay': 1e-05, 'grad_clip': 1.0, 'seed': 42, 'mixed_precision': 'none', 'num_train_timesteps': 1000, 'num_inference_steps': 100, 'beta_start': 0.0001, 'beta_end': 0.02, 'beta_schedule': 'linear', 'variance_type': 'fixed_small', 'prediction_type': 'epsilon', 'clip_sample': True, 'clip_sample_range': 1.0, 'unet_in_size': 128, 'unet_in_ch': 3, 'unet_ch': 128, 'unet_ch_mult': [1, 2, 2, 4], 'unet_attn': [2, 3], 'unet_num_res_blocks': 2, 'unet_dropout': 0.0, 'latent_ddpm': False, 'use_cfg': False, 'cfg_guidance_scale': 2.0, 'use_ddim': False, 'ckpt': None, 'max_train_steps': 406200, 'distributed': False, 'world_size': 1, 'rank': 0, 'local_rank': 0, 'device': 'cuda', 'total_batch_size': 32, '_wandb': {}}
+2025-03-19 21:18:26,920 INFO    MainThread:88710 [wandb_init.py:init():784] starting backend
+2025-03-19 21:18:26,920 INFO    MainThread:88710 [wandb_init.py:init():788] sending inform_init request
+2025-03-19 21:18:26,926 INFO    MainThread:88710 [backend.py:_multiprocessing_setup():97] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-03-19 21:18:26,926 INFO    MainThread:88710 [wandb_init.py:init():803] backend started and connected
+2025-03-19 21:18:26,927 INFO    MainThread:88710 [wandb_init.py:init():896] updated telemetry
+2025-03-19 21:18:26,928 INFO    MainThread:88710 [wandb_init.py:init():920] communicating run to backend with 90.0 second timeout
+2025-03-19 21:18:27,268 INFO    MainThread:88710 [wandb_init.py:init():995] starting run threads in backend
+2025-03-19 21:18:27,439 INFO    MainThread:88710 [wandb_run.py:_console_start():2377] atexit reg
+2025-03-19 21:18:27,440 INFO    MainThread:88710 [wandb_run.py:_redirect():2227] redirect: wrap_raw
+2025-03-19 21:18:27,440 INFO    MainThread:88710 [wandb_run.py:_redirect():2292] Wrapping output streams.
+2025-03-19 21:18:27,440 INFO    MainThread:88710 [wandb_run.py:_redirect():2317] Redirects installed.
+2025-03-19 21:18:27,444 INFO    MainThread:88710 [wandb_init.py:init():1037] run started, returning control to user process
+2025-03-19 21:21:04,377 WARNING MsgRouterThr:88710 [router.py:message_loop():77] message_loop has been closed
+Traceback (most recent call last):
+  File "/jet/home/yzhou17/.local/lib/python3.10/site-packages/wandb/sdk/interface/router_sock.py", line 28, in _read_message
+    resp = self._sock_client.read_server_response(timeout=1)
+  File "/jet/home/yzhou17/.local/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 285, in read_server_response
+    data = self._read_packet_bytes(timeout=timeout)
+  File "/jet/home/yzhou17/.local/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 270, in _read_packet_bytes
+    raise SockClientClosedError
+wandb.sdk.lib.sock_client.SockClientClosedError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/jet/home/yzhou17/.local/lib/python3.10/site-packages/wandb/sdk/interface/router.py", line 70, in message_loop
+    msg = self._read_message()
+  File "/jet/home/yzhou17/.local/lib/python3.10/site-packages/wandb/sdk/interface/router_sock.py", line 30, in _read_message
+    raise MessageRouterClosedError from e
+wandb.sdk.interface.router.MessageRouterClosedError
+2025-03-19 21:21:04,379 INFO    MsgRouterThr:88710 [mailbox.py:close():115] Closing mailbox, abandoning 1 handles.
