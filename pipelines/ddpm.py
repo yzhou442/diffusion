@@ -1,3 +1,4 @@
+
 from typing import List, Optional, Tuple, Union
 from PIL import Image
 from tqdm import tqdm
@@ -78,12 +79,12 @@ class DDPMPipeline:
                 assert len(classes) == batch_size, "Length of classes must be equal to batch_size"
                 classes = torch.tensor(classes, device=device)
             
-            # get uncond classes
-            uncond_classes = torch.zeros_like(classes)
-            # get class embeddings from classes
-            class_embeds = self.class_embedder(classes)
-            # get uncon class embeddings
-            uncond_embeds = self.class_embedder(uncond_classes)
+            # TODO: get uncond classes
+            uncond_classes = None 
+            # TODO: get class embeddings from classes
+            class_embeds = None 
+            # TODO: get uncon class embeddings
+            uncond_embeds = None 
         
         # starts with random noise
         image = randn_tensor(image_shape, generator=generator, device=device)
@@ -91,23 +92,26 @@ class DDPMPipeline:
         # set step values using set_timesteps of scheduler
         self.scheduler.set_timesteps(num_inference_steps, device=device)
         
-        # TODO: inverse diffusion process with for loop
+        # inverse diffusion process with for loop
         for t in self.progress_bar(self.scheduler.timesteps):
+            
             # NOTE: this is for CFG
-            if guidance_scale is not None and guidance_scale > 1.0:
-                model_input = torch.cat([image] * 2)
-                c = torch.cat([uncond_embeds, class_embeds])
+            if guidance_scale is not None and guidance_scale != 1.0:
+                # TODO: implement cfg
+                model_input = None 
+                c = None 
             else:
-                model_input = image 
-                # leave c as None if you are not using CFG
-                c = None if classes is None else class_embeds
+                model_input = image
+                # NOTE: leave c as None if you are not using CFG
+                c = None
             
             # 1. predict noise model_output
             model_output = self.unet(model_input, t, c)
             
-            if guidance_scale is not None and guidance_scale > 1.0:
+            if guidance_scale is not None and guidance_scale != 1.0:
+                # TODO: implement cfg
                 uncond_model_output, cond_model_output = model_output.chunk(2)
-                model_output = uncond_model_output + guidance_scale * (cond_model_output - uncond_model_output)
+                model_output = None
             
             # 2. compute previous image: x_t -> x_t-1 using scheduler
             image = self.scheduler.step(model_output, t, image, generator=generator)
@@ -117,13 +121,12 @@ class DDPMPipeline:
         # TODO: use VQVAE to get final image
         if self.vae is not None:
             # NOTE: remember to rescale your images
-            image = image / 0.1845
-            image = self.vae.decode(image)
+            image = None 
             # TODO: clamp your images values
-            image = torch.clamp(image, -1.0, 1.0)
+            image = None 
         
-        # TODO: return final image, re-scale to [0, 1]
-        image = (image + 1.0) / 2.0
+        # return final image, re-scale to [0, 1]
+        image = (image + 1) / 2
         
         # convert to PIL images
         image = image.cpu().permute(0, 2, 3, 1).numpy()
@@ -131,6 +134,3 @@ class DDPMPipeline:
         
         return image
         
-
-
-
