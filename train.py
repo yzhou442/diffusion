@@ -200,7 +200,7 @@ def main():
     if args.latent_ddpm:
         vae = VAE()
         # NOTE: do not change this
-        vae.init_from_ckpt('pretrained/model.ckpt')
+        vae.init_from_ckpt('pretrained/Model.ckpt')
         vae.eval()
         
     # Note: this is for cfg
